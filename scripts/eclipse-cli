@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DIR=$(dirname $0)
+CMD="$DIR/eclipse-cli.sh"
+CLASS="de.topobyte.eclipse.cli.EclipseCli"
+
+exec "$CMD" "$CLASS" "$@"
