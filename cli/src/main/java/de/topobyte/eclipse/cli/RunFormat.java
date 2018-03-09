@@ -1,5 +1,6 @@
 package de.topobyte.eclipse.cli;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -7,7 +8,13 @@ import java.util.List;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Options;
+import org.eclipse.jdt.core.ToolFactory;
+import org.eclipse.jdt.core.formatter.CodeFormatter;
 
+import de.topobyte.eclipse.cli.core.formatter.Formatting;
+import de.topobyte.eclipse.cli.core.formatter.preferences.Profile;
+import de.topobyte.eclipse.cli.core.formatter.preferences.Profiles;
+import de.topobyte.eclipse.cli.core.formatter.preferences.ProfilesReader;
 import de.topobyte.utilities.apache.commons.cli.OptionHelper;
 import de.topobyte.utilities.apache.commons.cli.commands.args.CommonsCliArguments;
 import de.topobyte.utilities.apache.commons.cli.commands.options.CommonsCliExeOptions;
@@ -57,8 +64,35 @@ public class RunFormat
 			paths.add(Paths.get(arg));
 		}
 
+		CodeFormatter formatter = null;
+		if (pathConfig == null) {
+			formatter = ToolFactory.createCodeFormatter(null);
+		} else {
+			Profiles configuration = ProfilesReader.parseProfiles(pathConfig);
+			List<Profile> profiles = configuration.getProfiles();
+			if (profiles.isEmpty()) {
+				System.out.println(
+						"Configuration file doesn't contain any profiles");
+				System.exit(1);
+			} else if (profiles.size() > 1) {
+				System.out.println(String.format(
+						"More than one profile found in configuration, using first ('%s')",
+						profiles.get(0).getName()));
+			}
+			Profile profile = profiles.get(0);
+			formatter = ToolFactory.createCodeFormatter(profile.getSettings());
+		}
+
 		for (Path path : paths) {
-			System.out.println(path);
+			if (Files.isRegularFile(path)) {
+				System.out
+						.println(String.format("formatting file: '%s'", path));
+				Formatting.format(formatter, path);
+			} else if (Files.isDirectory(path)) {
+				System.out.println(
+						String.format("formatting directory: '%s'", path));
+				Formatting.formatRecursive(formatter, path);
+			}
 		}
 	}
 
