@@ -12,7 +12,7 @@ import org.xml.sax.SAXException;
 public class ProfilesReader
 {
 
-	public static Profiles decodeCodeFormatterOptions(Path path)
+	public static Profiles parseProfiles(Path path)
 	{
 		try {
 			SAXParser saxParser = SAXParserFactory.newInstance().newSAXParser();

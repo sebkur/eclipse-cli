@@ -4,4 +4,7 @@ if (project.hasProperty("topobyte")) {
 }
 
 dependencies {
+    compile 'org.eclipse.jdt:org.eclipse.jdt.core:3.13.100'
+    compile 'commons-io:commons-io:2.4'
+    compile 'de.topobyte:melon-paths:0.0.1'
 }
