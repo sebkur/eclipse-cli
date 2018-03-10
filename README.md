@@ -1,10 +1,18 @@
 # Eclipse CLI
 
 **Table of Contents**
+* [License](#license)
 * [Requirements](#requirements)
 * [Command line interface (CLI)](#command-line-interface-cli)
     * [Building the CLI module](#building-the-cli-module)
     * [CLI usage and tasks](#cli-usage-and-tasks)
+
+# License
+
+This project is released under the terms of the GNU Lesser General Public
+License.
+
+See  [LGPL.md](LGPL.md) and [GPL.md](GPL.md) for details.
 
 ## Requirements
 
