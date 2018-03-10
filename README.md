@@ -53,6 +53,7 @@ Then invoke the main executable like this:
 Where `<task>` can be any of the following:
 
     format
+    create-workspace
 
 Each task accepts its own set of command line parameters. To run the formatter
 you would type:

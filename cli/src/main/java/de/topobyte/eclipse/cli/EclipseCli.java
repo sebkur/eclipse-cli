@@ -36,6 +36,9 @@ public class EclipseCli
 			DelegateExeOptions options = new DelegateExeOptions();
 			options.addCommand("format", RunFormat.OPTIONS_FACTORY,
 					RunFormat.class);
+			options.addCommand("create-workspace",
+					RunCreateWorkspace.OPTIONS_FACTORY,
+					RunCreateWorkspace.class);
 			return options;
 		}
 
