@@ -56,6 +56,7 @@ public class RunFormat
 		List<String> args = line.getArgList();
 		if (args.isEmpty()) {
 			System.out.println("Please specify one or more files");
+			arguments.getOptions().usage(name);
 			System.exit(1);
 		}
 
