@@ -59,7 +59,7 @@ Where `<task>` can be any of the following:
 Each task accepts its own set of command line parameters. To run the formatter
 you would type:
 
-    eclipse-cli --config /path/to/profiles.xml <dir>
+    eclipse-cli format --config /path/to/profiles.xml <dir>
 
 ## Development
 
