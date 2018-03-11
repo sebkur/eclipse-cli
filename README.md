@@ -6,6 +6,7 @@
 * [Command line interface (CLI)](#command-line-interface-cli)
     * [Building the CLI module](#building-the-cli-module)
     * [CLI usage and tasks](#cli-usage-and-tasks)
+* [Development](#development)
 
 # License
 
@@ -59,3 +60,11 @@ Each task accepts its own set of command line parameters. To run the formatter
 you would type:
 
     eclipse-cli --config /path/to/profiles.xml <dir>
+
+## Development
+
+To work on the project using Eclipse as an IDE which appears like an obvious
+choice for this Eclipse-related project, use Gradle to set up the Eclipse
+project files:
+
+    ./gradlew cleanEclipse eclipse
