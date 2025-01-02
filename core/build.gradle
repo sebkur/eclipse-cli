@@ -5,6 +5,8 @@ if (project.hasProperty("topobyte")) {
 
 dependencies {
     api 'org.eclipse.jdt:org.eclipse.jdt.core:3.40.0'
-    api 'commons-io:commons-io:2.4'
-    api 'de.topobyte:melon-paths:0.0.2'
+    api 'commons-io:commons-io:2.18.0'
+    api 'de.topobyte:melon-paths:0.1.0'
+    api 'de.topobyte:melon-paths:0.1.0'
+    api 'org.slf4j:slf4j-api:2.0.16'
 }
