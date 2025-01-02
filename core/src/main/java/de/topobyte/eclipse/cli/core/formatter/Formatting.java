@@ -19,6 +19,7 @@ package de.topobyte.eclipse.cli.core.formatter;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
@@ -63,7 +64,8 @@ public class Formatting
 
 		String source = null;
 		try {
-			source = IOUtils.toString(Files.newInputStream(path));
+			source = IOUtils.toString(Files.newInputStream(path),
+					StandardCharsets.UTF_8);
 		} catch (IOException e) {
 			logger.error("Error while reading file", e);
 			return;
@@ -71,7 +73,7 @@ public class Formatting
 
 		String formatted = format(formatter, source);
 		OutputStream output = Files.newOutputStream(path);
-		IOUtils.write(formatted, output);
+		IOUtils.write(formatted, output, StandardCharsets.UTF_8);
 		output.close();
 	}
 
